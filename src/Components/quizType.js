@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import RadioButton from "./radioButton";
 import { useHistory } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+
 export default function QuizType() {
   const [category, setCategory] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
   const history = useHistory();
+
   const categoryList = [
     {
       value: 9,
@@ -50,6 +53,7 @@ export default function QuizType() {
   const categoryRadioList = categoryList.map(cat => {
     return (
       <RadioButton
+        key={uuid()}
         handleChange={handleCatChange}
         name="Category"
         value={cat.value}
@@ -60,6 +64,7 @@ export default function QuizType() {
   const difficultyRadioList = difficultyList.map(diff => {
     return (
       <RadioButton
+        key={uuid()}
         handleChange={handleDiffChange}
         name="difficulty"
         value={diff.value}

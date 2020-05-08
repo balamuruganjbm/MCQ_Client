@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Result from "./result";
+import { v4 as uuid } from "uuid";
 
 export default function Quiz({
   question,
@@ -22,7 +23,6 @@ export default function Quiz({
     if (decodedCrtAns === ans) {
       setAnsResult(!ansResult);
       setAns(true);
-      // setAnsCount(ansCount + 1);
       ansCount();
       setNxtQn(!nxtQn);
     } else {
@@ -46,7 +46,7 @@ export default function Quiz({
   const decodedOptions = options.map(op => {
     const show = nxtQn ? "disabled" : null;
     return (
-      <div className="col s6" style={{ marginBottom: "10px" }}>
+      <div key={uuid()} className="col s6" style={{ marginBottom: "10px" }}>
         <button
           className={`waves-effect waves-light light-blue btn-large ${show}`}
           style={{ width: "100%" }}
